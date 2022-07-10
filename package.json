@@ -42,9 +42,14 @@
     "webpack-merge": "^5.8.0"
   },
   "dependencies": {
+    "@prismicio/client": "^6.6.1",
+    "@prismicio/helpers": "^2.3.1",
     "concurrently": "^7.2.0",
+    "dotenv": "^16.0.1",
     "express": "^4.18.1",
+    "node-fetch": "^3.2.6",
     "nodemon": "^2.0.16",
-    "pug": "^3.0.2"
+    "pug": "^3.0.2",
+    "ua-parser-js": "^1.0.2"
   }
 }
