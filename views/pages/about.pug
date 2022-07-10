@@ -1,7 +1,13 @@
 extends ../base.pug
 
 block variables 
-    - var template = 'about'
+	- var template = 'about'
 
 block content
-    h1.collections__title About
+	.about
+		.about__wrapper
+			section.about__gallery
+				.about__gallery__wrapper
+					each media in about.data.gallery
+						figure.about__gallery__media
+							img.about__gallery__media__image(alt=media.alt src=media.image.url)
