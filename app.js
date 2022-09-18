@@ -99,11 +99,11 @@ const handleRequest = async (api) => {
 
   const assets = [];
 
-  home.data.gallery.forEach((item) => {
+  home.data.gallery?.forEach((item) => {
     assets.push(item.image.url);
   });
 
-  about.data.gallery.forEach((item) => {
+  about.data.gallery?.forEach((item) => {
     assets.push(item.image.url);
   });
 
@@ -117,11 +117,11 @@ const handleRequest = async (api) => {
 
   collections.forEach((collection) => {
     collection.data.products.forEach((item) => {
-      assets.push(item.products_product.data.image.url);
+      assets.push(item.products_product.data?.image.url);
     });
   });
 
-  console.log(assets);
+  // console.log(assets);
 
   return {
     assets,
@@ -166,12 +166,15 @@ app.get('/collections', async (req, res) => {
 
 
 app.get('/detail/:uid', async (req, res) => {
+  console.log(req.params.uid)
   const api = await initApi(req);
   const defaults = await handleRequest(api);
 
   const product = await api.getByUID('product', req.params.uid, {
     fetchLinks: 'collection.title',
   });
+
+  console.log("product", product)
 
   res.render('pages/detail', {
     ...defaults,
