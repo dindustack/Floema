@@ -121,7 +121,7 @@ const handleRequest = async (api) => {
     });
   });
 
-  // console.log(assets);
+  console.log("collection", collections);
 
   return {
     assets,
