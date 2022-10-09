@@ -95,7 +95,6 @@ const handleRequest = async (api) => {
       }),
     ]);
 
-  //   console.log(about, home, collections);
 
   const assets = [];
 
