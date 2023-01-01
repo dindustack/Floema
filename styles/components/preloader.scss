@@ -1,5 +1,9 @@
 .preloader{
+  @extend %cover;
 
+  align-items: center;
+  display: flex;
+  justify-content: center;
 }
 
 .preloader__text{
