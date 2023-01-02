@@ -10,6 +10,7 @@ const TerserPlugin = require("terser-webpack-plugin");
 const IS_DEVELOPMENT = process.env.NODE_ENV === "dev";
 
 const dirApp = path.join(__dirname, "app");
+const dirAssets = path.join(__dirname, 'assets');
 const dirShared = path.join(__dirname, "shared");
 const dirStyles = path.join(__dirname, "styles");
 const dirNode = "node_modules";
@@ -18,7 +19,7 @@ module.exports = {
   entry: [path.join(dirApp, "index.js"), path.join(dirStyles, "index.scss")],
 
   resolve: {
-    modules: [dirApp, dirShared, dirStyles, dirNode],
+    modules: [dirApp, dirAssets, dirShared, dirStyles, dirNode],
   },
 
   plugins: [
@@ -37,7 +38,7 @@ module.exports = {
 
     new MiniCssExtractPlugin({
       filename: "[name].css",
-      chunkFilename: "[id].css",
+      // chunkFilename: "[id].css",
     }),
 
     new ImageMinimizerPlugin({
@@ -54,6 +55,8 @@ module.exports = {
     }),
 
     new CleanWebpackPlugin(),
+
+    
   ],
 
   module: {
@@ -87,12 +90,10 @@ module.exports = {
       },
 
       {
-        test: /\.(jpe?g|png|gif|svg|woff2?|fnt|webp)$/,
-        loader: "file-loader",
-        options: {
-          name(file) {
-            return "[hash].[ext]";
-          },
+        test: /\.(png|jpg|gif|jpe?g|svg|woff2?|fnt|webp|mp4)$/,
+        type: 'asset/resource',
+        generator: {
+          filename: '[name].[hash].[ext]',
         },
       },
 

@@ -17,7 +17,8 @@ html(lang="en")
     link(rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png")
     //- link(rel="manifest" href="/site.webmanifest")
     link(rel="mask-icon" href="/safari-pinned-tab.svg" color="#ff3a00")
-    link(href="../styles" rel="stylesheet")
+    link(href="main.css" rel="stylesheet")
+    link(rel="stylesheet", type="text/css", href=url_for("static", filename="main.scss", ))
     meta(name="msapplication-TileColor" content="#f4d8cc")
     meta(name="theme-color" content="#f4d8cc")
 
@@ -30,6 +31,9 @@ html(lang="en")
     //- meta(name="twitter:title" content=meta.data.title)
     //- meta(name="twitter:description" content=meta.data.description)
     //- meta(name="twitter:image" content=meta.data.image ? meta.data.image.url : '')
+
+  //- style
+  //-   include ../public/main.css
 
   body 
     include ./partials/preloader
