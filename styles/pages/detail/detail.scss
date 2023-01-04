@@ -1,6 +1,9 @@
 .detail {
   @extend %cover;
   @extend %center;
+
+  background: $color-quicksand;
+  color: $color-white;
 }
 
 .detail__wrapper {
@@ -17,7 +20,8 @@
 .detail__media__image {
   @extend %cover;
 
-  object-fit: cover;
+  // object-fit: cover;
+  transform: rotate(5deg);
 }
 
 .detail__information {
@@ -27,7 +31,7 @@
 .detail__information__collection {
   @extend %description-12;
 
-  margin-bottom: 3.7rem;
+  margin-bottom: 4rem;
   text-transform: uppercase;
 }
 
@@ -56,7 +60,7 @@
 }
 
 .detail__information__highlight__icon {
-  border: 1px solid #F0F;
+  border: 1px solid currentColor;
   border-radius: 50%;
   height: 4rem;
   margin-right: 3.75rem;
@@ -72,7 +76,6 @@
 }
 
 .detail__information__item {
-  align-items: center;
   display: flex;
 
   &:not(:first-child) {
@@ -82,14 +85,19 @@
 
 .detail__information__item__title {
   @extend %description-12;
+
+  padding-right: 2.5rem;
+  width: 10rem
 }
 
 .detail__information__item__description {
   @extend %description-16;
 
+  max-width: 44rem
 }
 
 .detail__information__link {
+  display: inline-block;
   margin-top: 3rem;
 
   @extend %title-30;
