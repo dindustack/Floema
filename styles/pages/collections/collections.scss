@@ -18,6 +18,7 @@
   position: absolute;
   transform: translate(-50%, -50%) rotate(-90deg);
   top: 50%;
+  z-index: 1;
 }
 
 .collections__titles__label {
@@ -40,12 +41,20 @@
 .collections_gallery_wrapper {
   align-items: center;
   display: flex;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%)
 }
 .collections__gallery__link {
 }
 .collections__gallery__media {
+  height: 63.1rem;
+  position: relative;
+  width: 44.7rem
 }
 .collections__gallery__media__image {
+  @extend %cover;
+  // object-fit: cover;
 
   transform: rotate(5deg);
 }
