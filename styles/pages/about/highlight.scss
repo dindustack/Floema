@@ -1,29 +1,27 @@
 .about__highlight {
-    
+  margin: 20rem 0;
+  position: relative;
+
+  &:first-child {
+    margin-top: 0;
+  }
+
+  &:last-child {
+    margin-top: 0;
+  }
 }
 
 .about__highlight__wrapper {
-    
 }
-
 
 .about__highlight__label {
-    
 }
-
-
 
 .about__highlight__title {
-    
 }
-
-
 
 .about__highlight__audio {
-    
 }
 
-
 .about__highlight__media__image {
-    
 }
