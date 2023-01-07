@@ -15,9 +15,10 @@ block content
 			each section in about.data.body
 				if section.slice_type == "title"
 					h2.about__title=section.primary.text
+					//- h2.about__title!=section.primary.text.replace(/\n/g, '<br>')
 
 				if section.slice_type == "content"
-					section.about__content
+					section.about__content=(class=`${section.data.type === 'Left' ? 'about__content--left' : 'about__content--right'}`)
 						.about__content__wrapper
 							p.about__content__label=section.primary.label
 
@@ -35,7 +36,7 @@ block content
 							h3.about__highlight__title=section.primary.title
 
 							each media in section.items
-								figure.about__highlight__audio
+								figure.about__highlight__media
 									img.about__highlight__media__image(alt=media.image.alt src=media.image.url)
 
 				if section.slice_type == "gallery"

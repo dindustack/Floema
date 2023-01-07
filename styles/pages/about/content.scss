@@ -1,27 +1,37 @@
 .about__content {
-  margin: 20rem 0;
+  margin: 20rem auto;
   position: relative;
+  width: 125.8rem;
 
   &:first-child {
-    margin-top: 0;
+    margin-bottom: 0;
   }
 
   &:last-child {
-    margin-top: 0;
+    margin-bottom: 0;
   }
 }
 
 .about__content__wrapper {
+  display: flex;
 }
 
 .about__content__label {
+  @extend %description-12;
+
+  width: 18rem;
 }
 
 .about__content__description {
+  width: 36.2rem;
 }
 
 .about__content__media {
+  position: absolute;
 }
 
 .about__content__media__image {
+  @extend %cover;
+
+  object-fit: cover;
 }
