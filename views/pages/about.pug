@@ -18,7 +18,7 @@ block content
 					//- h2.about__title!=section.primary.text.replace(/\n/g, '<br>')
 
 				if section.slice_type == "content"
-					section.about__content=(class=`${section.data.type === 'Left' ? 'about__content--left' : 'about__content--right'}`)
+					section.about__content(class=`${section.primary.type === 'Left' ? 'about__content--left' : 'about__content--right'}`)
 						.about__content__wrapper
 							p.about__content__label=section.primary.label
 
