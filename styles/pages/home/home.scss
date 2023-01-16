@@ -5,7 +5,29 @@
   background: $color-contessa;
   color: $color-quarter-spanish-white;
   text-align: center;
+
+  &::before,
+  &::after {
+    content: '';
+    height: 24rem;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+  }
+
+  &::before {
+    background: linear-gradient(to bottom, $color-contessa 0%,rgba($color-contessa, 0) 100%);
+    top: 0;
+  }
+
+  &::after {
+    background: linear-gradient(to top, $color-contessa 0%,rgba($color-contessa, 0) 100%);
+    bottom: 0
+  }
 }
+
 .home__wrapper {
 }
 .home__titles {
@@ -37,7 +59,7 @@
   height: 6rem;
   justify-content: center;
   left: 50%;
-  letter-spacing: 0.05rem;
+  letter-spacing: 0.05;
   position: absolute;
   text-transform: uppercase;
   transform: translateX(-50%);
