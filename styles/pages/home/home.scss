@@ -54,7 +54,7 @@
   @extend %description-14;
 
   align-items: center;
-  bottom: 5rem;
+  bottom: 10rem;
   display: flex;
   height: 6rem;
   justify-content: center;
@@ -64,4 +64,5 @@
   text-transform: uppercase;
   transform: translateX(-50%);
   width: 28.8rem;
+  z-index: 2;
 }
