@@ -18,7 +18,7 @@ block content
 					.detail__information__highlights
 						each highlight in product.data.highlights
 							p.detail__information__highlight
-								if highlight.highlights_icon == 'arrow'
+								if highlight.highlights_icon == 'Arrow'
 									svg.detail__information__highlight__icon(xmlns="http://www.w3.org/2000/svg" viewBox="0 0 41 41")
 										path(stroke="currentColor" fill="none" d="M-1166.33,520.33a20,20,0,0,1,20,20,20,20,0,0,1-20,20,20,20,0,0,1-20-20A20,20,0,0,1-1166.33,520.33Zm0,.5a19.5,19.5,0,0,1,19.5,19.5,19.5,19.5,0,0,1-19.5,19.5,19.5,19.5,0,0,1-19.5-19.5A19.5,19.5,0,0,1-1166.33,520.83Zm10.75,9-.66,2.36,0,2.59-1.93-2.31-2.31-1.93,2.59-.05Zm-20.51,20.51.66-2.36,0-2.59,1.93,2.31,2.31,1.93-2.59.05Zm4.6-4.6,11.31-11.31" transform="translate(1186.83 -519.83)")
 								else
