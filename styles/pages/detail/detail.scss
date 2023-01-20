@@ -17,7 +17,8 @@
   @include media("<phone") {
     display: block;
     margin: auto;
-    width: 100%;
+    padding: 31.5rem 0;
+    width: 66.1rem;
   }
 }
 
@@ -27,9 +28,9 @@
   width: 55.4rem;
 
   @include media("<phone") {
-    width: 66.1rem;
-    margin: 0 auto 7.8rem;
     height: 93.4rem;
+    margin: 0 auto 7.8rem;
+    width: 66.1rem;
   }
 }
 
@@ -64,7 +65,9 @@
 .detail__information__content {
   padding-left: 18rem;
 
- 
+  @include media('<phone') {
+    padding-left: 0;
+  }
 }
 
 .detail__information__highlights {
@@ -81,11 +84,17 @@
 }
 
 .detail__information__highlight__icon {
-  border: 1px solid currentColor;
+  // border: 1px solid currentColor;
   border-radius: 50%;
   height: 4rem;
   margin-right: 3.75rem;
   width: 4rem;
+
+  @include media('<phone') {
+    height: 9.2rem;
+    margin-right: 5.8rem;
+    width: 9.2rem;
+  }
 }
 
 .detail__information__highlight__text {
