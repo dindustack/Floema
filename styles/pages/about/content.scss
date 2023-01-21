@@ -20,6 +20,16 @@
   &:nth-child(8) {
     justify-content: flex-start;
   }
+
+  @include media('<phone') {
+    &:nth-child(5) {
+      justify-content: flex-end;
+    }
+  
+    &:nth-child(8) {
+      justify-content: flex-start;
+    }
+  }
 }
 
 .about__content__wrapper {

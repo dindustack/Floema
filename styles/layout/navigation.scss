@@ -36,4 +36,6 @@
 }
 .navigation__list__link {
   @extend %title-20;
+
+  display: block;
 }
