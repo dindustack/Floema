@@ -17,7 +17,7 @@
   @include media("<phone") {
     display: block;
     margin: auto;
-    padding: 31.5rem 0;
+    padding: 15rem 0 31.5rem;
     width: 66.1rem;
   }
 }
@@ -84,7 +84,7 @@
 }
 
 .detail__information__highlight__icon {
-  // border: 1px solid currentColor;
+  border: 1px solid currentColor;
   border-radius: 50%;
   height: 4rem;
   margin-right: 3.75rem;
@@ -118,6 +118,11 @@
 
   padding-right: 2.5rem;
   width: 10rem;
+
+  @include media('<phone') {
+    padding-right: 5rem;
+    width: 15rem;
+  }
 }
 
 .detail__information__item__description {
@@ -143,7 +148,14 @@
   position: absolute;
   transform: translateX(-50%);
   width: 12.4rem;
-  z-index: 1;
+  z-index: 2;
+
+  @include media('<phone') {
+    bottom: 12rem;
+    font-size: 3rem;
+    height: 13rem;
+    width: 26.8rem;
+  }
 }
 
 .detail__button__icon {
