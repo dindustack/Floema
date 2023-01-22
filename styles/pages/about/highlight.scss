@@ -42,6 +42,10 @@
   position: absolute;
   top: 50%;
   transform: translate(-50%, -50%) rotate(-90deg);
+
+  @include media('<=phone') {
+    font-size: 30rem;
+  }
 }
 
 .about__highlight__media {

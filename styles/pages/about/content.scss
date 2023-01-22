@@ -3,7 +3,6 @@
   justify-content: center;
   margin: 20rem auto;
   position: relative;
-  // width: 125.8rem;
 
   &:first-child {
     margin-bottom: 0;
@@ -21,11 +20,11 @@
     justify-content: flex-start;
   }
 
-  @include media('<phone') {
+  @include media("<phone") {
     &:nth-child(5) {
       justify-content: flex-end;
     }
-  
+
     &:nth-child(8) {
       justify-content: flex-start;
     }
@@ -39,7 +38,7 @@
     flex-direction: row-reverse;
   }
 
-  @include media('<phone') {
+  @include media("<phone") {
     .about__content:nth-child(3) & {
       flex-direction: column-reverse;
     }
@@ -48,6 +47,15 @@
 
 .about__content__box {
   display: flex;
+
+  @include media("<=phone") {
+    margin: auto;
+    width: 60.9rem;
+    
+    .about__content:nth-child(3) & {
+      margin-top: 10rem;
+    }
+  }
 }
 
 .about__content__label {
@@ -61,14 +69,20 @@
   width: 36.2rem;
 
   p:not(:first-child) {
-    margin-top: 4rem;
+    margin-top: 2.5rem;
+  }
+
+  @include media('<=phone') {
+    padding-right: 2.5rem;
+    width: calc(100% - 15rem);
   }
 }
 
 .about__content__media {
   position: relative;
+
   .about__content:nth-child(3) & {
-    height: 80.8rem;
+    height: 88.8rem;
     margin-left: 18rem;
     width: 53.8rem;
   }
@@ -80,7 +94,7 @@
   }
 
   .about__content:nth-child(8) & {
-    height: 52rem;
+    height: 57rem;
     margin-right: 12rem;
     width: 84.2rem;
   }
@@ -89,6 +103,14 @@
     height: 85.8rem;
     margin-left: 22rem;
     width: 60.8rem;
+  }
+
+  @include media("<=phone") {
+    .about__content:nth-child(3) & {
+      height: 91.4rem;
+      margin-left: 0;
+      width: 60.9rem;
+    }
   }
 }
 
