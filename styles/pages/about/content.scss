@@ -38,6 +38,12 @@
   .about__content--right & {
     flex-direction: row-reverse;
   }
+
+  @include media('<phone') {
+    .about__content:nth-child(3) & {
+      flex-direction: column-reverse;
+    }
+  }
 }
 
 .about__content__box {

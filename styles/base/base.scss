@@ -18,9 +18,9 @@ body {
 
   font-family: $font-suisse-bp;
 
-  @include media("<phone") {
-    font-size: 100px;
-  }
+  // @include media("<phone") {
+  //   font-size: 100px;
+  // }
 }
 
 a {
