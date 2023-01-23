@@ -22,4 +22,8 @@
   left: 50%;
   position: absolute;
   transform: translateX(-50%);
+
+  @include media('<phone') {
+    font-size: 2rem;
+  }
 }
