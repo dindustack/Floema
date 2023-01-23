@@ -6,6 +6,7 @@
   transform: translate(-50%, -50%) rotate(-90deg);
   display: flex;
 }
+
 %vertical-titles__label {
   @extend %description-12;
 
@@ -14,7 +15,12 @@
   text-transform: uppercase;
   margin: 0 3rem;
   letter-spacing: 0.1;
+
+  @include media("<phone") {
+    font-size: 1.2rem;
+  }
 }
+
 %vertical-titles__title {
   @extend %title-200;
 
