@@ -17,7 +17,16 @@
   width: 144rem;
 
   .about__highlight:nth-child(4) & {
-    width: 104rem
+    width: 104rem;
+  }
+
+  @include media("<=phone") {
+    width: 100%;
+
+    .about__highlight:nth-child(4) & {
+      height: 119.3rem;
+      width: 100%;
+    }
   }
 }
 
@@ -43,7 +52,7 @@
   top: 50%;
   transform: translate(-50%, -50%) rotate(-90deg);
 
-  @include media('<=phone') {
+  @include media("<=phone") {
     font-size: 30rem;
   }
 }
@@ -68,7 +77,6 @@
     right: 0;
   }
 }
-
 
 .about__highlight__media__image {
   @extend %cover;

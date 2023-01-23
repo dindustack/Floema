@@ -42,18 +42,23 @@
     .about__content:nth-child(3) & {
       flex-direction: column-reverse;
     }
+
+    .about__content:nth-child(5) & {
+      flex-direction: column;
+    }
   }
 }
 
 .about__content__box {
   display: flex;
+  width: 100%;
 
   @include media("<=phone") {
     margin: auto;
-    width: 60.9rem;
-    
+
     .about__content:nth-child(3) & {
       margin-top: 10rem;
+      width: 60.9rem;
     }
   }
 }
@@ -72,7 +77,7 @@
     margin-top: 2.5rem;
   }
 
-  @include media('<=phone') {
+  @include media("<=phone") {
     padding-right: 2.5rem;
     width: calc(100% - 15rem);
   }
@@ -110,6 +115,12 @@
       height: 91.4rem;
       margin-left: 0;
       width: 60.9rem;
+    }
+
+    .about__content:nth-child(5) & {
+      height: 50rem;
+      margin-left: 0;
+      width: 100%;
     }
   }
 }
