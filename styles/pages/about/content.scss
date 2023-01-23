@@ -46,19 +46,38 @@
     .about__content:nth-child(5) & {
       flex-direction: column;
     }
+
+    .about__content:nth-child(8) & {
+      flex-direction: column-reverse;
+    }
+
+    .about__content:nth-child(9) & {
+      flex-direction: column-reverse;
+    }
   }
 }
 
 .about__content__box {
   display: flex;
-  width: 100%;
 
   @include media("<=phone") {
     margin: auto;
+    width: 60.9rem;
 
     .about__content:nth-child(3) & {
       margin-top: 10rem;
-      width: 60.9rem;
+    }
+
+    .about__content:nth-child(5) & {
+      margin-bottom: 10rem;
+    }
+
+    .about__content:nth-child(8) & {
+      margin-top: 10rem;
+    }
+
+    .about__content:nth-child(9) & {
+      margin-top: 10rem;
     }
   }
 }
@@ -68,6 +87,12 @@
 
   text-transform: uppercase;
   width: 18rem;
+
+  @include media("<=phone") {
+    padding-right: 2.4rem;
+    word-break: break-all;
+    width: calc(100% - 15rem);
+  }
 }
 
 .about__content__description {
@@ -78,7 +103,6 @@
   }
 
   @include media("<=phone") {
-    padding-right: 2.5rem;
     width: calc(100% - 15rem);
   }
 }
@@ -120,7 +144,19 @@
     .about__content:nth-child(5) & {
       height: 50rem;
       margin-left: 0;
-      width: 100%;
+      width: 100vw;
+    }
+
+    .about__content:nth-child(8) & {
+      height: 50rem;
+      margin-right: 0;
+      width: 100vw;
+    }
+
+    .about__content:nth-child(9) & {
+      height: 85.8rem;
+      margin-left: 0;
+      width: 60.8rem;
     }
   }
 }
