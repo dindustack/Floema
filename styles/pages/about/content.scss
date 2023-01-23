@@ -89,9 +89,9 @@
   width: 18rem;
 
   @include media("<=phone") {
-    padding-right: 2.4rem;
-    word-break: break-all;
-    width: calc(100% - 15rem);
+    font-size: 2.4rem;
+    padding-right: 2.5rem;
+    width: 15rem;
   }
 }
 
