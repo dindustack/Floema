@@ -2,8 +2,15 @@ class App {
   constructor () {
       console.log('App')
   }
+
+  createPages () {
+    this.pages = {
+      about: new About(),
+      collections: new Collections(),
+      detail: new Detail(),
+      home: new Home(),
+    }
+  }
 }
 
 new App()
-// I need to code more
-// I will continue tomorrow
