@@ -1,10 +1,11 @@
 export default class Page {
-  constructor ({ id }) {
-    console.log('Page')
-
-    this.id = id
+  constructor({ element, elements, id }) {
+    this.selector = element
+    this.selectorChildren = elements
+    this.id = id;
   }
-  create () {
-    console.log('Create', this.id)
+  create() {
+    this.element = document.querySelector(this.selector)
+    console.log("Create", this.id);
   }
 }

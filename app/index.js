@@ -1,32 +1,31 @@
-import About from 'pages/about'
-import Collections from 'pages/Collections'
-import Detail from 'pages/Detail'
-import Home from 'pages/Home'
+import About from "pages/about";
+import Collections from "pages/Collections";
+import Detail from "pages/Detail";
+import Home from "pages/Home";
 class App {
-  constructor () {
-    this.createPages()
-    this.createContent()
+  constructor() {
+    this.createContent();
+    this.createPages();
   }
 
-  createContent () {
-    this.content = document.querySelector('.content')
-    this.template = this.content.getAttribute('data-template')
-
-    console.log(this.template)
+  createContent() {
+    this.content = document.querySelector(".content");
+    this.template = this.content.getAttribute("data-template");
   }
 
-  createPages () {
+  createPages() {
     this.pages = {
       about: new About(),
       collections: new Collections(),
       detail: new Detail(),
       home: new Home(),
-    }
+    };
 
-    this.page = this.pages[this.template]
+    this.page = this.pages[this.template];
+    this.page.create();
 
-    console.log(this.pages)
+    console.log(this.page);
   }
 }
 
-new App()
+new App();
