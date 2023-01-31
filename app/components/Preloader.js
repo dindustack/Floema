@@ -1,6 +1,6 @@
 import Component from "classes/Component";
 
-export class Preloader extends Component {
+export default class Preloader extends Component {
   constructor() {
     super({
       element: ".preloader",
@@ -10,5 +10,9 @@ export class Preloader extends Component {
       },
     });
     console.log(this.element, this.elements)
+
+    setTimeout(_ => {
+      this.emit("completed")
+    }, 1000)
   }
 }
