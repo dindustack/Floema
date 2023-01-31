@@ -3,12 +3,13 @@ import each from "lodash/each";
 
 export default class Component extends EventEmitter {
   constructor({ element, elements }) {
+    super()
+
     this.selector = element;
     this.selectorChildren = { ...elements };
     this.create()
 
     this.addEventListeners()
-    this.removeEventListeners()
   }
   create() {
     this.element = document.querySelector(this.selector);

@@ -1,5 +1,7 @@
 import Component from "classes/Component";
 
+import each from "lodash/each";
+
 export default class Preloader extends Component {
   constructor() {
     super({
@@ -7,12 +9,17 @@ export default class Preloader extends Component {
       elements: {
         title: ".preloader__text",
         number: ".preloader__number",
+        images: document.querySelectorAll("img"),
       },
     });
-    console.log(this.element, this.elements)
+    console.log(this.element, this.elements);
 
-    setTimeout(_ => {
-      this.emit("completed")
-    }, 1000)
+    this.createLoader();
+  }
+
+  createLoader() {
+    each(this.elements.images, (image) => {
+      console.log(image);
+    });
   }
 }
