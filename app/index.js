@@ -18,7 +18,7 @@ class App {
 
   createPreloader() {
     this.preloader = new Preloader();
-    this.preloader.once('completed', this.onPreloaded)
+    this.preloader.once("completed", this.onPreloaded.bind(this));
   }
 
   createContent() {
@@ -40,7 +40,7 @@ class App {
   }
 
   onPreloaded() {
-    console.log("Preloaded!")
+    this.preloader.destroy();
   }
 
   async onChange(url) {
@@ -56,10 +56,8 @@ class App {
       const divContent = div.querySelector(".content");
       this.template = divContent.getAttribute("data-template");
 
-      this.content.setAttribute(
-        "data-template",
-        divContent.getAttribute("data-template")
-      );
+      this.content.setAttribute("data-template", this.template);
+
       this.content.innerHTML = divContent.innerHTML;
 
       this.page = this.pages[this.template];
