@@ -3,6 +3,8 @@ import Component from "classes/Component";
 
 import each from "lodash/each";
 
+import {split} from 'utils/text'
+
 export default class Preloader extends Component {
   constructor() {
     super({
@@ -13,6 +15,18 @@ export default class Preloader extends Component {
         images: document.querySelectorAll("img"),
       },
     });
+
+    split({
+      element: this.elements.title,
+      expression: '<br>'
+    })
+
+    this.elements.titleSpans = split({
+      element: this.elements.title,
+      expression: '<br>'
+    })
+
+    this.elements.titleSpans = this.elements.title.querySelectorAll('span span')
 
     this.length = 0;
 
@@ -47,12 +61,19 @@ export default class Preloader extends Component {
         delay: 2
       });
 
-      this.animateOut.to(this.element, {
-        autoAlpha: 0,
-      });
+      this.animateOut.to(this.elements.titleSpans, {
+          duration: 1.5,
+          ease: 'expo.out',
+          stagger: 0.1,
+          y: '100%'
+        });
+
+      // this.animateOut.to(this.element, {
+      //   autoAlpha: 0,
+      // });
 
       this.animateOut.call((_) => {
-        this.emit("completed");
+        // this.emit("completed");
       });
     });
   }
