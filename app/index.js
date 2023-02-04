@@ -41,6 +41,8 @@ class App {
 
   onPreloaded() {
     this.preloader.destroy();
+
+    this.page.show();
   }
 
   async onChange(url) {
@@ -63,9 +65,11 @@ class App {
 
       this.page = this.pages[this.template];
       this.page.create();
-      this.page.show();
+
+
+      this.addLinkListeners();
     } else {
-      console.log("Error");
+      console.log(`response status: ${res.status}`);
     }
   }
 
@@ -77,7 +81,7 @@ class App {
         event.preventDefault();
         const { href } = link;
 
-        this.onChange(href);
+        this.onChange({ url: href});
       };
     });
   }
