@@ -41,6 +41,8 @@ export default class Page {
     });
   }
 
+  // comment out
+
   hide() {
     return new Promise((resolve) => {
       GSAP.to(this.element, {
