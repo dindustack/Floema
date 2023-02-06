@@ -5,7 +5,7 @@
   "author": "Chinwendu Silvia Agbaetuo",
   "license": "MIT",
   "scripts": {
-    "backend:build": "nodemon app.js",
+    "backend:build": "node app.js",
     "backend:development": "nodemon app.js",
     "frontend:build": "webpack --progress --config webpack.config.build.js",
     "frontend:development": "webpack serve --progress --config webpack.config.development.js",
