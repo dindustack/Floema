@@ -4,7 +4,7 @@ import each from "lodash/each";
 export default class Page {
   constructor({ element, elements = {}, id }) {
     this.selector = element;
-    this.selectorChildren = { ...elements };
+    this.selectorChildren = { ...elements, preloaders: "[data-src]" };
     this.id = id;
   }
   create() {
@@ -28,20 +28,31 @@ export default class Page {
         }
       }
     });
+
+    this.createPreloader()
+  }
+
+  createPreloader() {
+    this.preloaders = map(this.elements.preloaders, (element) => {
+      return new AsyncLoad({ element });
+    });
   }
 
   show() {
     return new Promise((resolve) => {
-      GSAP.fromTo(this.element, {
-        autoAlpha: 0,
-      }, {
-        autoAlpha: 1,
-        onComplete: resolve,
-      });
+      GSAP.fromTo(
+        this.element,
+        {
+          autoAlpha: 0,
+        },
+        {
+          autoAlpha: 1,
+          onComplete: resolve,
+        }
+      );
     });
   }
 
-  // comment out
 
   hide() {
     return new Promise((resolve) => {
