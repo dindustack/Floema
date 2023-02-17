@@ -28,38 +28,53 @@ export default class Page {
         }
       }
     });
-
-    this.createPreloader()
-  }
-
-  createPreloader() {
-    this.preloaders = map(this.elements.preloaders, (element) => {
-      return new AsyncLoad({ element });
-    });
   }
 
   show() {
     return new Promise((resolve) => {
-      GSAP.fromTo(
+      this.animationIn = GSAP.timeline();
+
+      this.animationIn.fromTo(
         this.element,
         {
           autoAlpha: 0,
         },
         {
           autoAlpha: 1,
-          onComplete: resolve,
         }
       );
+      this.animationIn.call((_) => {
+        this.addEventListeners();
+
+        resolve();
+      });
     });
   }
 
-
   hide() {
     return new Promise((resolve) => {
-      GSAP.to(this.element, {
+      this.removeEventListeners();
+
+      this.animationOut = GSAP.timeline();
+
+      this.animationOut.to(this.element, {
         autoAlpha: 0,
         onComplete: resolve,
       });
     });
+  }
+
+  onMouseWheel(event) {
+    console.log(event);
+
+    const { deltaY } = event;
+  }
+
+  addEventListeners() {
+    window.addEventListener("mousewheel", this.onMouseWheel);
+  }
+
+  removeEventListeners() {
+    window.removeEventListener("mousewheel", this.onMouseWheel);
   }
 }
