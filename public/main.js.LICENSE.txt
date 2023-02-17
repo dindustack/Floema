@@ -20,6 +20,8 @@
 
 /*! ../modules/logger/index.js */
 
+/*! ../node_modules/mini-css-extract-plugin/dist/hmr/hotModuleReplacement.js */
+
 /*! ../utils/log.js */
 
 /*! ./CSSPlugin.js */
@@ -117,6 +119,8 @@
 /*! ./named-references */
 
 /*! ./node_modules/webpack-dev-server/client/clients/WebSocketClient.js */
+
+/*! ./normalize-url */
 
 /*! ./numeric-unicode-map */
 
@@ -467,6 +471,10 @@
   \*********************************************************************/
 
 /*!************************************************************************!*\
+  !*** ./node_modules/mini-css-extract-plugin/dist/hmr/normalize-url.js ***!
+  \************************************************************************/
+
+/*!************************************************************************!*\
   !*** ./node_modules/webpack-dev-server/client/modules/logger/index.js ***!
   \************************************************************************/
 
@@ -477,6 +485,10 @@
 /*!***************************************************************************!*\
   !*** ./node_modules/webpack-dev-server/client/clients/WebSocketClient.js ***!
   \***************************************************************************/
+
+/*!*******************************************************************************!*\
+  !*** ./node_modules/mini-css-extract-plugin/dist/hmr/hotModuleReplacement.js ***!
+  \*******************************************************************************/
 
 /*!********************************************************************************!*\
   !*** ./node_modules/webpack-dev-server/client/utils/getCurrentScriptSource.js ***!

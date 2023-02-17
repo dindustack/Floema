@@ -6,7 +6,7 @@ npm-error.log*
 node_modules/
 
 # webpack build output
-# public/
+public/
 
 # environment variables
 .env
