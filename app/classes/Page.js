@@ -1,15 +1,26 @@
 import GSAP from "gsap";
+import Prefix from "prefix";
 
 import each from "lodash/each";
 export default class Page {
   constructor({ element, elements = {}, id }) {
     this.selector = element;
-    this.selectorChildren = { ...elements, preloaders: "[data-src]" };
+    this.selectorChildren = { ...elements };
+
     this.id = id;
+    this.transformPrefix = Prefix("transform");
+
+    console.log(this.transformPrefix);
   }
   create() {
     this.element = document.querySelector(this.selector);
     this.elements = {};
+
+    this.scroll = {
+      current: 0,
+      target: 0,
+      last: 0,
+    };
 
     each(this.selectorChildren, (entry, key) => {
       if (
@@ -65,9 +76,25 @@ export default class Page {
   }
 
   onMouseWheel(event) {
-    console.log(event);
+    // console.log(event);
 
     const { deltaY } = event;
+
+    this.scroll.target += deltaY;
+  }
+
+  update() {
+    this.scroll.current = GSAP.utils.interpolate(
+      this.scroll.target,
+      this.scroll.current,
+      0.1
+    );
+
+    if (this.elements.wrapper) {
+      this.elements.wrapper.style[
+        this.transformPrefix
+      ] = `translateY(-${this.scroll.current}px)`;
+    }
   }
 
   addEventListeners() {

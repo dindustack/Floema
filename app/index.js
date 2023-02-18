@@ -14,6 +14,8 @@ class App {
     this.createPages();
 
     this.addLinkListeners();
+
+    this.update();
   }
 
   createPreloader() {
@@ -47,7 +49,7 @@ class App {
 
   async onChange(url) {
     await this.page.hide();
-    
+
     const request = await window.fetch(url);
 
     if (request.status === 200) {
@@ -66,11 +68,17 @@ class App {
       this.page = this.pages[this.template];
       this.page.create();
 
-
       this.addLinkListeners();
     } else {
       console.log(`response status: ${res.status}`);
     }
+  }
+
+  update() {
+    if (this.page && this.page.update) {
+      this.page.update();
+    }
+    this.frame = window.requestAnimationFrame(this.update.bind(this));
   }
 
   addLinkListeners() {
@@ -81,7 +89,7 @@ class App {
         event.preventDefault();
         const { href } = link;
 
-        this.onChange({ url: href});
+        this.onChange({ url: href });
       };
     });
   }
