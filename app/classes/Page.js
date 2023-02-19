@@ -1,4 +1,5 @@
 import GSAP from "gsap";
+import NormalizeWheel from "normalize-wheel";
 import Prefix from "prefix";
 
 import each from "lodash/each";
@@ -77,7 +78,7 @@ export default class Page {
   }
 
   onMouseWheel(event) {
-    const { deltaY } = event;
+    const { pixelY } = NormalizeWheel(event);
 
     this.scroll.target += deltaY;
   }
