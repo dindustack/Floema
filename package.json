@@ -33,6 +33,7 @@
     "imagemin-optipng": "^8.0.0",
     "imagemin-svgo": "^10.0.1",
     "mini-css-extract-plugin": "^2.6.0",
+    "normalize-wheel": "^1.0.1",
     "postcss-loader": "^6.2.1",
     "prefix": "^1.0.0",
     "pug-plugin": "^4.7.0",
