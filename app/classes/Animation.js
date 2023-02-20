@@ -9,6 +9,8 @@ export default class Animation extends Component {
     this.element = element;
 
     this.createObserver();
+
+    this.animateOut();
   }
 
   createObserver() {
@@ -16,6 +18,7 @@ export default class Animation extends Component {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           console.log("animateIn");
+          this.animateIn();
         } else {
           console.log("animateOut");
         }
@@ -24,4 +27,8 @@ export default class Animation extends Component {
 
     this.observer.observe(this.element);
   }
+
+  animateIn() {}
+
+  animateOut() {}
 }
