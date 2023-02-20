@@ -100,7 +100,7 @@ export default class Page {
   onMouseWheel(event) {
     const { pixelY } = NormalizeWheel(event);
 
-    this.scroll.target += deltaY;
+    this.scroll.target += pixelY;
   }
 
   onResize() {

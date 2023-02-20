@@ -2,6 +2,8 @@ import GSAP from "gsap";
 
 import Animation from "classes/Animation";
 
+import {calculate, split} from 'utils/text'
+
 export default class Title extends Animation {
   constructor({ element, elements }) {
     console.log(element)
@@ -9,6 +11,11 @@ export default class Title extends Animation {
       element,
       elements,
     });
+
+    split({ element: this.element})
+    split({ element: this.element})
+
+    this.elementLines = this.element.querySelector('span span')
   }
 
   animateIn() {
@@ -19,6 +26,7 @@ export default class Title extends Animation {
       },
       {
         autoAlpha: 1,
+        delay: 0.5,
         duration: 1.5,
       }
     );
@@ -29,4 +37,6 @@ export default class Title extends Animation {
       autoAlpha: 0,
     });
   }
+
+  onResize() {}
 }
