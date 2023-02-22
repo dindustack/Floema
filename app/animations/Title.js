@@ -1,5 +1,7 @@
 import GSAP from "gsap";
 
+import each from "lodash/each";
+
 import Animation from "classes/Animation";
 
 import { calculate, split } from "utils/text";
@@ -18,24 +20,34 @@ export default class Title extends Animation {
   }
 
   animateIn() {
+    if (this.isAnimatedIn) {
+      return;
+    }
+
+    this.isAnimatedIn = true;
+
     GSAP.set(this.element, {
       autoAlpha: 1,
     });
-    GSAP.fromTo(
-      this.elementsLines,
-      {
-        y: "100%",
-      },
-      {
-        delay: 0.5,
-        duration: 1.5,
-        stagger: 0.2,
-        y: "0%",
-      }
-    );
+
+    each(this.elementsLines, (line, index) => {
+      GSAP.fromTo(
+        line,
+        {
+          y: "100%",
+        },
+        {
+          delay: 0.5 + index * 0.2,
+          duration: 1.5,
+          y: "0%",
+        }
+      );
+    });
   }
 
   animateOut() {
+    this.isAnimatedIn = false;
+
     GSAP.set(this.element, {
       autoAlpha: 0,
     });
