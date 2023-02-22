@@ -6,7 +6,6 @@ import { calculate, split } from "utils/text";
 
 export default class Title extends Animation {
   constructor({ element, elements }) {
-    console.log(element);
     super({
       element,
       elements,
@@ -19,18 +18,19 @@ export default class Title extends Animation {
   }
 
   animateIn() {
+    GSAP.set(this.element, {
+      autoAlpha: 1,
+    });
     GSAP.fromTo(
-      this.elementLines,
+      this.elementsLines,
       {
-        autoAlpha: 1,
         y: "100%",
       },
       {
-        autoAlpha: 1,
         delay: 0.5,
         duration: 1.5,
         stagger: 0.2,
-        y: "100%",
+        y: "0%",
       }
     );
   }
@@ -42,8 +42,8 @@ export default class Title extends Animation {
   }
 
   onResize() {
-    this.elementLines = calculate(this.elementLinesSpans);
+    this.elementsLines = calculate(this.elementLinesSpans);
 
-    console.log("praise", this.elementLines)
+    console.log("praise", this.elementsLines);
   }
 }

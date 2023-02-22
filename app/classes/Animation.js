@@ -6,7 +6,7 @@ export default class Animation extends Component {
       element,
       elements,
     });
-    this.element = element;
+    // this.element = element;
 
     this.createObserver();
 
@@ -31,4 +31,6 @@ export default class Animation extends Component {
   animateIn() {}
 
   animateOut() {}
+
+  onResize() {}
 }
