@@ -46,8 +46,6 @@ export default class Title extends Animation {
   }
 
   animateOut() {
-    this.isAnimatedIn = false;
-
     GSAP.set(this.element, {
       autoAlpha: 0,
     });
@@ -55,7 +53,5 @@ export default class Title extends Animation {
 
   onResize() {
     this.elementsLines = calculate(this.elementLinesSpans);
-
-    console.log("praise", this.elementsLines);
   }
 }

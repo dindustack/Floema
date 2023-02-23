@@ -13,10 +13,7 @@ export default class Paragraph extends Animation {
       elements,
     });
 
-    split({ element: this.element, append: true });
-    split({ element: this.element, append: true });
-
-    this.elementLinesSpans = this.element.querySelectorAll("span span");
+    this.elementLinesSpans = split({ append: true, element: this.element });
   }
 
   animateIn() {
@@ -35,6 +32,7 @@ export default class Paragraph extends Animation {
           y: "100%",
         },
         {
+          autoAlpha: 1,
           delay: index * 0.2,
           duration: 1.5,
           ease: "expo.out",
@@ -46,8 +44,6 @@ export default class Paragraph extends Animation {
   }
 
   animateOut() {
-    this.isAnimatedIn = false;
-
     GSAP.set(this.element, {
       autoAlpha: 0,
     });
@@ -55,7 +51,5 @@ export default class Paragraph extends Animation {
 
   onResize() {
     this.elementsLines = calculate(this.elementLinesSpans);
-
-    console.log("praise", this.elementsLines);
   }
 }

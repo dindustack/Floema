@@ -5,12 +5,16 @@ import Prefix from "prefix";
 import each from "lodash/each";
 import map from "lodash/map";
 
+import Label from "animations/Label";
+import Paragraph from "animations/Paragraph";
 import Title from "animations/Title";
 export default class Page {
   constructor({ element, elements = {}, id }) {
     this.selector = element;
     this.selectorChildren = {
       ...elements,
+      animationsLabel: '[data-animation="label"]',
+      animationsParagraphs: '[data-animation="paragraph"]',
       animationsTitles: '[data-animation="title"]',
     };
 
@@ -52,15 +56,37 @@ export default class Page {
   }
 
   createAnimations() {
-    console.log(this.elements.animationsTitles)
+    this.animations = [];
+
+    // Titles
     this.animationsTitles = map(this.elements.animationsTitles, (element) => {
       return new Title({
         element,
       });
     });
 
-    console.log(this.animationsTitles)
+    this.animations.push(...this.animationsTitles);
 
+    // Paragraphs
+    this.animationsParagraphs = map(
+      this.elements.animationsParagraphs,
+      (element) => {
+        return new Paragraph({
+          element,
+        });
+      }
+    );
+
+    this.animations.push(...this.animationsParagraphs);
+
+    // Labels
+    this.animationsLabels = map(this.elements.animationsLabels, (element) => {
+      return new Label({
+        element,
+      });
+    });
+
+    this.animations.push(...this.animationsLabels);
   }
 
   show() {
@@ -109,7 +135,7 @@ export default class Page {
         this.elements.wrapper.clientHeight - window.innerHeight;
     }
 
-    each(this.animationsTitles, animation => animation.onResize())
+    each(this.animations, (animation) => animation.onResize());
   }
 
   update() {
