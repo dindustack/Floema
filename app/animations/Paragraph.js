@@ -6,7 +6,7 @@ import Animation from "classes/Animation";
 
 import { calculate, split } from "utils/text";
 
-export default class Title extends Animation {
+export default class Paragraph extends Animation {
   constructor({ element, elements }) {
     super({
       element,
