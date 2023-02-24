@@ -13,7 +13,7 @@ export default class Page {
     this.selector = element;
     this.selectorChildren = {
       ...elements,
-      animationsLabel: '[data-animation="label"]',
+      animationsLabels: '[data-animation="label"]',
       animationsParagraphs: '[data-animation="paragraph"]',
       animationsTitles: '[data-animation="title"]',
     };
