@@ -54,6 +54,7 @@ export default class Page {
 
     this.createAnimations();
   }
+  // i will finish you soon
 
   createAnimations() {
     this.animations = [];
