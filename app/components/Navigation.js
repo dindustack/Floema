@@ -20,11 +20,27 @@ export default class Navigation extends Component {
         color: COLOR_BRIGHT_GRAY,
         duration: 1.5,
       });
+
+      GSAP.to(this.elements.items[0], {
+        autoAlpha: 1,
+      })
+
+      GSAP.to(this.elements.items[1], {
+        autoAlpha: 0,
+      })
     } else {
       GSAP.to(this.element, {
         color: COLOR_QUARTER_SPANISH_WHITE,
         duration: 1.5,
       });
+
+      GSAP.to(this.elements.items[0], {
+        autoAlpha: 0,
+      })
+
+      GSAP.to(this.elements.items[1], {
+        autoAlpha: 1,
+      })
     }
   }
 }
