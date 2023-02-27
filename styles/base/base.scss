@@ -5,6 +5,10 @@
 }
 
 html {
+  @extend %cover;
+
+  background: $color-contessa;
+  color: $color-quarter-spanish-white;
   font-size: calc(100vw / 1920 * 10);
   line-height: 1;
   overflow: hidden;
@@ -19,8 +23,6 @@ body {
   @extend %cover;
   @extend %description-16;
 
-  background: $color-contessa;
-  color: $color-quarter-spanish-white;
   font-family: $font-suisse-bp;
   position: fixed;
 }
@@ -49,7 +51,7 @@ img {
 
 [data-animation="label"],
 [data-animation="paragraph"],
-  [data-animation="title"] {
+[data-animation="title"] {
   span {
     display: inline-block;
     overflow: hidden;

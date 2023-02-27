@@ -9,6 +9,7 @@ import Highlight from "animations/Highlight";
 import Label from "animations/Label";
 import Paragraph from "animations/Paragraph";
 import Title from "animations/Title";
+import { ColorsManager } from "classes/Colors";
 export default class Page {
   constructor({ element, elements = {}, id }) {
     this.selector = element;
@@ -62,11 +63,14 @@ export default class Page {
     this.animations = [];
 
     // Highlights
-    this.animationsHighlights = map(this.elements.animationsHighlights, (element) => {
-      return new Highlight({
-        element,
-      });
-    });
+    this.animationsHighlights = map(
+      this.elements.animationsHighlights,
+      (element) => {
+        return new Highlight({
+          element,
+        });
+      }
+    );
 
     this.animations.push(...this.animationsHighlights);
 
@@ -103,6 +107,11 @@ export default class Page {
 
   show() {
     return new Promise((resolve) => {
+      ColorsManager.change({
+        backgroundColor: this.element.getAttribute("data-background"),
+        color: this.element.getAttribute("data-color"),
+      });
+
       this.animationIn = GSAP.timeline();
 
       this.animationIn.fromTo(
