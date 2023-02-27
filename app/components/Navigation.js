@@ -15,9 +15,16 @@ export default class Navigation extends Component {
   }
 
   onChange(template) {
-    GSAP.to(this.element, {
-      color: template === 'about' ? COLOR_BRIGHT_GRAY : COLOR_QUARTER_SPANISH_WHITE,
-      duration: 1.5
-    });
+    if (template === "about") {
+      GSAP.to(this.element, {
+        color: COLOR_BRIGHT_GRAY,
+        duration: 1.5,
+      });
+    } else {
+      GSAP.to(this.element, {
+        color: COLOR_QUARTER_SPANISH_WHITE,
+        duration: 1.5,
+      });
+    }
   }
 }
