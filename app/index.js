@@ -1,5 +1,6 @@
 import each from "lodash/each";
 
+import Navigation from "components/Navigation";
 import Preloader from "components/Preloader";
 
 import About from "pages/about";
@@ -11,12 +12,19 @@ class App {
   constructor() {
     this.createPreloader();
     this.createContent();
+    this.createNavigation();
     this.createPages();
 
     this.addEventListeners();
     this.addLinkListeners();
 
     this.update();
+  }
+
+  createNavigation() {
+    this.navigation = new Navigation({
+      template: this.template,
+    });
   }
 
   createPreloader() {
@@ -39,19 +47,19 @@ class App {
 
     this.page = this.pages[this.template];
     this.page.create();
-    this.page.show();
+    // this.page.show();
   }
 
   // Events
   onPreloaded() {
     this.preloader.destroy();
 
-    this.onResize()
+    this.onResize();
 
     this.page.show();
   }
 
-  async onChange(url) {
+  async onChange({ url }) {
     await this.page.hide();
 
     const request = await window.fetch(url);
@@ -65,6 +73,8 @@ class App {
       const divContent = div.querySelector(".content");
       this.template = divContent.getAttribute("data-template");
 
+      this.navigation.onChange(this.template);
+
       this.content.setAttribute("data-template", this.template);
 
       this.content.innerHTML = divContent.innerHTML;
@@ -72,12 +82,12 @@ class App {
       this.page = this.pages[this.template];
       this.page.create();
 
-      this.onResize(); 
+      this.onResize();
       this.page.show();
 
       this.addLinkListeners();
     } else {
-      console.log(`response status: ${res.status}`);
+      console.error(`response status: ${request.status}`);
     }
   }
 
