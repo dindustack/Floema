@@ -63,8 +63,6 @@ export default class Page {
     this.createPreloader();
   }
 
-  // WORK ON THIS TODAY
-
   createAnimations() {
     this.animations = [];
 
