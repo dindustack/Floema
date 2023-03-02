@@ -60,7 +60,7 @@ export default class Page {
     });
 
     this.createAnimations();
-    this.createPreloaders();
+    this.createPreloader();
   }
 
   // WORK ON THIS TODAY
