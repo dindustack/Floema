@@ -22,7 +22,7 @@ export default class Page {
       animationsParagraphs: '[data-animation="paragraph"]',
       animationsTitles: '[data-animation="title"]',
 
-      preloaders: '[data-src]'
+      preloaders: "[data-src]",
     };
 
     this.id = id;
@@ -62,6 +62,14 @@ export default class Page {
     this.createAnimations();
     this.createPreloader();
   }
+
+  createPreloader() {
+    this.preloaders = map(this.elements.preloaders, (element) => {
+      return new AsyncLoad({ element });
+    });
+  }
+
+  // Animations
 
   createAnimations() {
     this.animations = [];
@@ -107,12 +115,6 @@ export default class Page {
     });
 
     this.animations.push(...this.animationsLabels);
-  }
-
-  createPreloader() {
-    this.preloaders = map(this.elements.preloaders, element => {
-      return new AsyncLoad({ element })
-    })
   }
 
   show() {
