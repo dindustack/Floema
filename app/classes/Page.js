@@ -70,7 +70,6 @@ export default class Page {
   }
 
   // Animations
-
   createAnimations() {
     this.animations = [];
 
@@ -156,6 +155,8 @@ export default class Page {
     });
   }
 
+
+
   onMouseWheel(event) {
     const { pixelY } = NormalizeWheel(event);
 
@@ -170,6 +171,8 @@ export default class Page {
 
     each(this.animations, (animation) => animation.onResize());
   }
+
+  // Loop
 
   update() {
     this.scroll.target = GSAP.utils.clamp(
@@ -194,6 +197,8 @@ export default class Page {
       ] = `translateY(-${this.scroll.current}px)`;
     }
   }
+
+  // Listeners
 
   addEventListeners() {
     window.addEventListener("mousewheel", this.onMouseWheelEvent);
