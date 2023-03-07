@@ -69,7 +69,10 @@ export default class Page {
     });
   }
 
-  // Animations
+   
+  /**
+   * Animations
+   */
   createAnimations() {
     this.animations = [];
 
@@ -144,7 +147,7 @@ export default class Page {
 
   hide() {
     return new Promise((resolve) => {
-      this.removeEventListeners();
+      this.destroy();
 
       this.animationOut = GSAP.timeline();
 
@@ -198,7 +201,9 @@ export default class Page {
     }
   }
 
-  // Listeners
+  /**
+   * Listeners
+   */
 
   addEventListeners() {
     window.addEventListener("mousewheel", this.onMouseWheelEvent);
@@ -207,4 +212,16 @@ export default class Page {
   removeEventListeners() {
     window.removeEventListener("mousewheel", this.onMouseWheelEvent);
   }
+
+  /**
+   * Destroy
+   */
+  destroy() {
+    this.removeEventListeners()
+
+  }
+
+  
+
+  
 }
