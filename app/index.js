@@ -91,6 +91,10 @@ class App {
     }
   }
 
+  /***
+   * ! fIX BUGS FOR MOBILE VIEW
+   */
+
   onResize() {
     if (this.page && this.page.onResize) {
       this.page.onResize();
