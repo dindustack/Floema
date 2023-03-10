@@ -101,6 +101,9 @@ class App {
  
 
   onResize() {
+    if(this.canvas && this.canvas.onResize) {
+      this.canvas.onResize()
+    }
     if (this.page && this.page.onResize) {
       this.page.onResize();
     }

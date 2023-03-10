@@ -11,4 +11,8 @@ export default class Canvas {
     this.gl = this.renderer.gl
     document.body.appendChild(this.gl.canvas)
   }
+
+  onResize() {
+    this.renderer.setSize(window.innerWidth, window.innerHeight)
+  }
 }
