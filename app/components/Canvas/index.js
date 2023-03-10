@@ -3,17 +3,21 @@ import { Box, Camera, Mesh, Program, Renderer, Transform } from "ogl";
 export default class Canvas {
   constructor() {
     this.createRenderer();
+    this.createCamera();
+    this.createScene();
+    this.createCube();
   }
 
   createRenderer() {
     this.renderer = new Renderer();
 
     this.gl = this.renderer.gl;
+
     document.body.appendChild(this.gl.canvas);
   }
 
   createCamera() {
-    this.camera = new Camera(gl);
+    this.camera = new Camera(this.gl);
     this.camera.position.z = 5;
   }
 
@@ -23,8 +27,9 @@ export default class Canvas {
 
   createCube() {
     this.geometry = new Box(this.gl);
-    this.program = new Program(gl, {
-      vertex: /* glsl */ `
+
+    this.program = new Program(this.gl, {
+      vertex: `
           attribute vec3 position;
 
           uniform mat4 modelViewMatrix;
@@ -34,14 +39,18 @@ export default class Canvas {
               gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
           }
       `,
-      fragment: /* glsl */ `
+      fragment: `
           void main() {
               gl_FragColor = vec4(1.0);
           }
       `,
     });
 
-    this.mesh = new Mesh(this.geometry, this.program );
+    this.mesh = new Mesh(this.gl, {
+      geometry: this.geometry,
+      program: this.program,
+    });
+
     this.mesh.setParent(this.scene);
   }
 
@@ -50,5 +59,12 @@ export default class Canvas {
     this.camera.perspective({
       aspect: window.innerWidth / window.innerHeight,
     });
+  }
+
+  update() {
+    this.renderer.render({
+      camera: this.camera,
+      scene: this.scene
+    })
   }
 }
