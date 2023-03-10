@@ -17,6 +17,34 @@ export default class Canvas {
     this.camera.position.z = 5;
   }
 
+  createScene() {
+    this.scene = new Transform();
+  }
+
+  createCube() {
+    this.geometry = new Box(this.gl);
+    this.program = new Program(gl, {
+      vertex: /* glsl */ `
+          attribute vec3 position;
+
+          uniform mat4 modelViewMatrix;
+          uniform mat4 projectionMatrix;
+
+          void main() {
+              gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+          }
+      `,
+      fragment: /* glsl */ `
+          void main() {
+              gl_FragColor = vec4(1.0);
+          }
+      `,
+    });
+
+    this.mesh = new Mesh(this.geometry, this.program );
+    this.mesh.setParent(this.scene);
+  }
+
   onResize() {
     this.renderer.setSize(window.innerWidth, window.innerHeight);
     this.camera.perspective({
