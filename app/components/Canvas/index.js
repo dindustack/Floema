@@ -16,6 +16,8 @@ export default class Canvas {
     document.body.appendChild(this.gl.canvas);
   }
 
+  // this is a comment
+
   createCamera() {
     this.camera = new Camera(this.gl);
     this.camera.position.z = 5;
@@ -62,9 +64,12 @@ export default class Canvas {
   }
 
   update() {
+    this.mesh.rotation.x += 0.01;
+    this.mesh.rotation.y += 0.01;
+
     this.renderer.render({
       camera: this.camera,
-      scene: this.scene
-    })
+      scene: this.scene,
+    });
   }
 }
