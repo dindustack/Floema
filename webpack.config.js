@@ -38,7 +38,6 @@ module.exports = {
 
     new MiniCssExtractPlugin({
       filename: "[name].css",
-      // chunkFilename: "[id].css",
     }),
 
     new ImageMinimizerPlugin({
@@ -108,7 +107,7 @@ module.exports = {
 
       {
         test: /\.(glsl|frag|vert)$/,
-        loader: "raw-loader",
+        loader: "asset/source",
         exclude: /node_modules/,
       },
 
