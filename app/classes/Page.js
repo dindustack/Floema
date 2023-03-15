@@ -149,9 +149,9 @@ export default class Page {
     return new Promise((resolve) => {
       this.destroy();
 
-      this.animationOut = GSAP.timeline();
+      this.animationIn = GSAP.timeline();
 
-      this.animationOut.to(this.element, {
+      this.animationIn.to(this.element, {
         autoAlpha: 0,
         onComplete: resolve,
       });
@@ -220,8 +220,4 @@ export default class Page {
     this.removeEventListeners()
 
   }
-
-  
-
-  
 }

@@ -89,7 +89,7 @@ export default class Preloader extends Component {
       }, '-=1');
 
       this.animateOut.call((_) => {
-        this.emit("completed");
+        this.destroy();
       });
     });
   }
