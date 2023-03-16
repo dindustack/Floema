@@ -1,14 +1,15 @@
-import { Box, Camera, Mesh, Program, Renderer, Transform } from "ogl";
+import {  Camera, Renderer, Transform } from "ogl";
+import Home from "./Home"
 
-import vertex from 'shaders/plane-vertex.glsl';
-import fragment from 'shaders/plane-fragment.glsl';
+// import vertex from 'shaders/plane-vertex.glsl';
+// import fragment from 'shaders/plane-fragment.glsl';
 
 export default class Canvas {
   constructor() {
     this.createRenderer();
     this.createCamera();
     this.createScene();
-    this.createCube();
+    this.createHome();
   }
 
   createRenderer() {
@@ -19,7 +20,6 @@ export default class Canvas {
     document.body.appendChild(this.gl.canvas);
   }
 
-  // this is a comment
 
   createCamera() {
     this.camera = new Camera(this.gl);
@@ -30,20 +30,21 @@ export default class Canvas {
     this.scene = new Transform();
   }
 
-  createCube() {
-    this.geometry = new Box(this.gl);
+  createHome() {
+    // this.geometry = new Box(this.gl);
 
-    this.program = new Program(this.gl, {
-      vertex,
-      fragment
-    });
+    // this.program = new Program(this.gl, {
+    //   vertex,
+    //   fragment
+    // });
 
-    this.mesh = new Mesh(this.gl, {
-      geometry: this.geometry,
-      program: this.program,
-    });
+    // this.mesh = new Mesh(this.gl, {
+    //   geometry: this.geometry,
+    //   program: this.program,
+    // });
 
-    this.mesh.setParent(this.scene);
+    // this.mesh.setParent(this.scene);
+    this.home = new Home()
   }
 
   onResize() {
