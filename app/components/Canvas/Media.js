@@ -4,8 +4,9 @@ import fragment from "shaders/plane-fragment.glsl"
 import vertex from "shaders/plane-vertex.glsl"
 
 export default class {
-  constructor ({ element, gl }) {
+  constructor ({ element, geometry, gl }) {
     this.element = element
+    this.geometry = geometry
     this.gl = gl
   }
 
@@ -15,11 +16,9 @@ export default class {
   }
 
   createProgram() {
-    this.program = new Program({
+    this.program = new Program(this.gl, {
       fragment, vertex, uniforms: {
-        uniforms: {
-
-        }
+        
       }
     })
 
