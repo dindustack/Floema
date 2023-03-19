@@ -1,9 +1,6 @@
 import {  Camera, Renderer, Transform } from "ogl";
 import Home from "./Home"
 
-// import vertex from 'shaders/plane-vertex.glsl';
-// import fragment from 'shaders/plane-fragment.glsl';
-
 export default class Canvas {
   constructor() {
     this.createRenderer();
