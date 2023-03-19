@@ -1,5 +1,5 @@
-import {  Camera, Renderer, Transform } from "ogl";
-import Home from "./Home"
+import { Camera, Renderer, Transform } from "ogl";
+import Home from "./Home";
 
 export default class Canvas {
   constructor() {
@@ -17,7 +17,6 @@ export default class Canvas {
     document.body.appendChild(this.gl.canvas);
   }
 
-
   createCamera() {
     this.camera = new Camera(this.gl);
     this.camera.position.z = 5;
@@ -28,20 +27,10 @@ export default class Canvas {
   }
 
   createHome() {
-    // this.geometry = new Box(this.gl);
-
-    // this.program = new Program(this.gl, {
-    //   vertex,
-    //   fragment
-    // });
-
-    // this.mesh = new Mesh(this.gl, {
-    //   geometry: this.geometry,
-    //   program: this.program,
-    // });
-
-    // this.mesh.setParent(this.scene);
-    this.home = new Home()
+    this.home = new Home({
+      gl: this.gl,
+      scene: this.scene
+    });
   }
 
   onResize() {
@@ -52,9 +41,6 @@ export default class Canvas {
   }
 
   update() {
-    this.mesh.rotation.x += 0.01;
-    this.mesh.rotation.y += 0.01;
-
     this.renderer.render({
       camera: this.camera,
       scene: this.scene,
