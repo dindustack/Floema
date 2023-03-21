@@ -4,12 +4,13 @@ import fragment from "shaders/plane-fragment.glsl";
 import vertex from "shaders/plane-vertex.glsl";
 
 export default class {
-  constructor({ element, geometry, gl, index, scene }) {
+  constructor({ element, geometry, gl, index, scene, sizes }) {
     this.element = element;
     this.geometry = geometry;
     this.gl = gl;
     this.index = index;
     this.scene = scene;
+    this.sizes = sizes;
 
     this.createMesh();
     this.createProgram();
@@ -20,7 +21,7 @@ export default class {
     this.texture = new Texture(this.gl);
 
     this.image = new window.Image();
-    this.image.crossOrigin = 'anonymous'
+    this.image.crossOrigin = "anonymous";
     this.image.src = this.element.getAttribute("data-src");
     this.image.onload = (_) => (this.texture.image = this.image);
   }
@@ -30,7 +31,7 @@ export default class {
       fragment,
       vertex,
       uniforms: {
-        tMap: { value: this.texture }
+        tMap: { value: this.texture },
       },
     });
   }
@@ -43,6 +44,22 @@ export default class {
 
     this.mesh.setParent(this.scene);
 
-    this.mesh.position.x += this.index * this.mesh.scale.x
+    this.mesh.scale.x = 2;
+
+    this.mesh.position.x += this.index * this.mesh.scale.x;
+  }
+
+  createBounds() {
+    this.bounds = this.element.getBoundingClientRect();
+
+    this.updateScale();
+    this.updateX();
+    this.updateY();
+
+    // console.log("bounds", this.bounds);
+  }
+
+  onResize() {
+    this.createBounds();
   }
 }
