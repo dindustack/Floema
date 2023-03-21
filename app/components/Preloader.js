@@ -17,6 +17,7 @@ export default class Preloader extends Component {
       },
     });
 
+
     split({
       element: this.elements.title,
       expression: "<br>",
@@ -31,7 +32,6 @@ export default class Preloader extends Component {
       this.elements.title.querySelectorAll("span span");
 
     this.length = 0;
-
 
     this.createLoader();
   }
@@ -81,12 +81,16 @@ export default class Preloader extends Component {
         "-=1.4"
       );
 
-      this.animateOut.to(this.element, {
-        duration: 1.5,
-        ease: 'expo.out',
-        scaleY: 0,
-        transformOrigin: '100% 100%'
-      }, '-=1');
+      this.animateOut.to(
+        this.element,
+        {
+          duration: 1.5,
+          ease: "expo.out",
+          scaleY: 0,
+          transformOrigin: "100% 100%",
+        },
+        "-=1"
+      );
 
       this.animateOut.call((_) => {
         this.destroy();
