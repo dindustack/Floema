@@ -49,17 +49,31 @@ export default class {
     this.mesh.position.x += this.index * this.mesh.scale.x;
   }
 
-  createBounds() {
+  createBounds({ sizes }) {
     this.bounds = this.element.getBoundingClientRect();
 
-    this.updateScale();
+    this.updateScale(sizes);
     this.updateX();
     this.updateY();
 
-    // console.log("bounds", this.bounds);
+    console.log("bounds", this.bounds);
   }
 
-  onResize() {
-    this.createBounds();
+  updateScale({ height, width }) {
+    this.height = this.bounds.height / window.innerHeight;
+    this.width = this.bounds.width / window.innerWidth;
+
+    this.mesh.scale.x = width * this.width;
+    this.mesh.scale.y = height * this.height;
+
+    console.log(this.height, this.width);
+  }
+
+  updateX() {}
+
+  updateY() {}
+
+  onResize(sizes) {
+    this.createBounds(sizes);
   }
 }

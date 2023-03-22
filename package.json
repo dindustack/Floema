@@ -39,7 +39,7 @@
     "node-fetch": "^3.3.1",
     "nodemon": "^2.0.21",
     "normalize-wheel": "^1.0.1",
-    "ogl": "^0.0.113",
+    "ogl": "0.0.113",
     "postcss-loader": "^6.2.1",
     "prefix": "^1.0.0",
     "raw-loader": "^4.0.2",

@@ -13,13 +13,16 @@ import Home from "pages/Home";
 class App {
   constructor() {
     this.createContent();
+
+    this.createCanvas();
     this.createPreloader();
     this.createNavigation();
-    this.createCanvas()
     this.createPages();
 
     this.addEventListeners();
     this.addLinkListeners();
+
+    this.onResize();
 
     this.update();
   }
@@ -31,12 +34,16 @@ class App {
   }
 
   createPreloader() {
-    this.preloader = new Preloader();
+    this.preloader = new Preloader({
+      canvas: this.canvas,
+    });
     this.preloader.once("completed", this.onPreloaded.bind(this));
   }
 
   createCanvas() {
-    this.canvas = new Canvas()
+    this.canvas = new Canvas({
+      template: this.template,
+    });
   }
 
   createContent() {
@@ -54,14 +61,15 @@ class App {
 
     this.page = this.pages[this.template];
     this.page.create();
-    // this.page.show();
   }
 
-  // Events
+  /**
+   * Events
+   */
   onPreloaded() {
-    this.preloader.destroy();
-
     this.onResize();
+
+    this.canvas.onPreloaded();
 
     this.page.show();
   }
@@ -90,6 +98,7 @@ class App {
       this.page.create();
 
       this.onResize();
+
       this.page.show();
 
       this.addLinkListeners();
@@ -98,27 +107,30 @@ class App {
     }
   }
 
- 
-
   onResize() {
-    if(this.canvas && this.canvas.onResize) {
-      this.canvas.onResize()
+    if (this.canvas && this.canvas.onResize) {
+      this.canvas.onResize();
     }
-    if (this.page && this.page.onResize) {
-      this.page.onResize();
-    }
+
+    window.requestAnimationFrame((_) => {
+      if (this.canvas && this.canvas.onResize) {
+        this.canvas.onResize();
+      }
+    });
   }
 
-  // Loop
+  /**
+   * Loop
+   */
   update() {
-    if (this.canvas && this.canvas.update) {
-      this.canvas.update();
-    }
-
     if (this.page && this.page.update) {
       this.page.update();
     }
- 
+
+    if (this.canvas && this.canvas.update) {
+      this.canvas.update(this.page.scroll);
+    }
+
     this.frame = window.requestAnimationFrame(this.update.bind(this));
   }
 
