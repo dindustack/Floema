@@ -11,7 +11,10 @@ export default class Canvas {
   }
 
   createRenderer() {
-    this.renderer = new Renderer();
+    this.renderer = new Renderer({
+      alpha: true,
+      antialias: true,
+    });
 
     this.gl = this.renderer.gl;
 
@@ -61,10 +64,16 @@ export default class Canvas {
     }
   }
 
+  /**
+   * Update
+   */
+
   update() {
     this.renderer.render({
-      camera: this.camera,
       scene: this.scene,
+      camera: this.camera,
     });
+
+    window.requestAnimationFrame(this.update.bind(this))
   }
 }

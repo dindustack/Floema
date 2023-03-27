@@ -56,7 +56,7 @@ export default class {
     this.updateX();
     this.updateY();
 
-    console.log("bounds", this.bounds);
+    // console.log("bounds", this.bounds);
   }
 
   updateScale({ height, width }) {
@@ -66,7 +66,10 @@ export default class {
     this.mesh.scale.x = width * this.width;
     this.mesh.scale.y = height * this.height;
 
-    console.log(this.height, this.width);
+    this.mesh.position.x = (-width / 2) + (this.mesh.scale.x / 2);
+    this.mesh.position.y = (height / 2) - (this.mesh.scale.x / 2);
+
+    console.log(this.mesh.position.x);
   }
 
   updateX() {}

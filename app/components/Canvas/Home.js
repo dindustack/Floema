@@ -7,6 +7,7 @@ export default class {
   constructor({ gl, scene, sizes }) {
     this.gl = gl;
     this.sizes = sizes;
+    this.scene = scene;
 
     this.group = new Transform();
 
@@ -17,7 +18,7 @@ export default class {
     this.createGeometry();
     this.createGallery();
 
-    this.group.setParent(scene);
+    this.group.setParent(this.scene);
   }
 
   createGeometry() {
